@@ -48,6 +48,12 @@ public class CadastrarBebidaView extends javax.swing.JFrame {
 
         jLabel1.setText("Nome");
 
+        TxtFieldNomeBebida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtFieldNomeBebidaActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Preço");
 
         TxtFieldPrecoBebida.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +159,10 @@ public class CadastrarBebidaView extends javax.swing.JFrame {
        this.dispose();
        TeleInicialView tiv = new TeleInicialView();
        tiv.setVisible(true);        }//GEN-LAST:event_BtnTelaPrincipalActionPerformed
+
+    private void TxtFieldNomeBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFieldNomeBebidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtFieldNomeBebidaActionPerformed
 
     /**
      * @param args the command line arguments
