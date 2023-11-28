@@ -21,8 +21,7 @@ public class BebidaDAO {
     Connection conn;
     PreparedStatement pstm;
     ResultSet resultst;
-    ArrayList<BebidaModel> bebidas = new ArrayList() {
-    };
+    ArrayList<BebidaModel> bebidas = new ArrayList() { };
 
     public void CadastrarBebida(BebidaModel bebida) {
         String sql = "insert into Bebidas(nome, preco) values(?,?)";
