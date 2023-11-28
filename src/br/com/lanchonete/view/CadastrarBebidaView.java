@@ -218,10 +218,8 @@ private void listarBebidas() {
             ArrayList<BebidaModel> bebidas = bebidadao.MostrarBebidas();
             for (int num = 0; num < bebidas.size(); num++) {
                 model.addRow(new Object[]{
-                    bebidas.get(num).getId(),
                     bebidas.get(num).getNome(),
                     bebidas.get(num).getPreco()
-                        
                 });
 
             }

@@ -4,7 +4,8 @@
  */
 package br.com.lanchonete.dao;
 
-import br.com.lanchonete.model.LancheModel;
+
+import br.com.lanchonete.model.PedidoCadastro;
 import br.com.lanchonete.model.PedidoModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,13 +25,13 @@ public class PedidosDAO {
     ResultSet resultst;
     ArrayList<PedidoModel> pedidos = new ArrayList() {};
 
-    public void CadastrarPedido(PedidoModel pedidoModel) {
+    public void CadastrarPedido(PedidoCadastro pedidoModel) {
         String sql = "insert into Pedidos(lancheID, bebidaID, clienteID) values (?,?,?)";
         conn = new DAO().conecta();
         try {
             pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, pedidoModel.getLanche());
-            pstm.setInt(2, pedidoModel.getBebida());
+            pstm.setString(1, pedidoModel.getNomeLanche());
+            pstm.setString(2, pedidoModel.getNomeBebida());
             pstm.setString(3, pedidoModel.getCpf());
             
             pstm.execute();

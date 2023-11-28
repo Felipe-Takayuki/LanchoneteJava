@@ -10,15 +10,13 @@ create table Clientes(
 );
 
 create table Lanches(
-    id int not null auto_increment primary key,
-    nome varchar(255) not null,
+    nome varchar(255) not null primary key,
     descricao varchar(255) not null, 
     preco decimal (10,2) not null
 );
 
 create table Bebidas(
-    id int not null auto_increment primary key,
-    nome varchar(255) not null,
+    nome varchar(255) not null primary key,
     preco decimal (10,2) not null
 );
 
@@ -27,7 +25,7 @@ create table Pedidos(
    lancheID int,
    bebidaID int,
    clienteID varchar(255) not null,  
-   foreign key(lancheID) references Lanches(id),
-   foreign key(bebidaID) references Bebidas(id),
+   foreign key(lancheID) references Lanches(nome),
+   foreign key(bebidaID) references Bebidas(nome),
    foreign key(clienteID) references Clientes(cpf)
 );

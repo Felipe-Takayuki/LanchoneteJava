@@ -4,6 +4,13 @@
  */
 package br.com.lanchonete.view;
 
+import br.com.lanchonete.dao.PedidosDAO;
+import br.com.lanchonete.model.PedidoCadastro;
+import br.com.lanchonete.model.PedidoModel;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aluno
@@ -15,6 +22,7 @@ public class CadastroPedidosView extends javax.swing.JFrame {
      */
     public CadastroPedidosView() {
         initComponents();
+        listarLanches();
     }
 
     /**
@@ -29,13 +37,13 @@ public class CadastroPedidosView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         TxtFieldCPF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BtnCadastrarPedido = new javax.swing.JButton();
+        btnTelaPincipal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TbPedidos = new javax.swing.JTable();
+        TxtFieldBebidaName = new javax.swing.JTextField();
+        TxtFieldHamburguerName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,38 +55,25 @@ public class CadastroPedidosView extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Hamburguer");
+        jLabel2.setText("Nome do hamburguer");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setText("Nome da Bebida");
+
+        BtnCadastrarPedido.setText("Cadastrar Pedido");
+        BtnCadastrarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                BtnCadastrarPedidoActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Bebida");
-
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        btnTelaPincipal.setText("Tela Principal");
+        btnTelaPincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                btnTelaPincipalActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Cadastrar Pedido");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Tela Principal");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TbPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -89,7 +84,13 @@ public class CadastroPedidosView extends javax.swing.JFrame {
                 "CPF", "Nome", "Lanche", "Bebida", "ValorTotal"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TbPedidos);
+
+        TxtFieldHamburguerName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtFieldHamburguerNameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,24 +99,19 @@ public class CadastroPedidosView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 189, Short.MAX_VALUE))
-                            .addComponent(TxtFieldCPF, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(181, 181, 181))
+                    .addComponent(TxtFieldCPF)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jComboBox2, 0, 148, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel3)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(BtnCadastrarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                                .addComponent(btnTelaPincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 27, Short.MAX_VALUE))
+                    .addComponent(TxtFieldBebidaName)
+                    .addComponent(TxtFieldHamburguerName))
+                .addGap(181, 181, 181)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
         );
@@ -128,16 +124,16 @@ public class CadastroPedidosView extends javax.swing.JFrame {
                 .addComponent(TxtFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TxtFieldHamburguerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TxtFieldBebidaName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(BtnCadastrarPedido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(btnTelaPincipal)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(84, Short.MAX_VALUE)
@@ -148,25 +144,30 @@ public class CadastroPedidosView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
     private void TxtFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFieldCPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtFieldCPFActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BtnCadastrarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarPedidoActionPerformed
+       String cpf, hamburguerNome, bebidaNome;
+       cpf = TxtFieldCPF.getText();
+       hamburguerNome = TxtFieldHamburguerName.getText();
+       bebidaNome = TxtFieldBebidaName.getText();
+       
+        PedidoCadastro pdCadastro = new PedidoCadastro();
+        pdCadastro.setCpf(cpf);
+        pdCadastro.setNomeBebida(bebidaNome);
+        pdCadastro.setNomeLanche(hamburguerNome);
+        
+    }//GEN-LAST:event_BtnCadastrarPedidoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnTelaPincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelaPincipalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnTelaPincipalActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void TxtFieldHamburguerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFieldHamburguerNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_TxtFieldHamburguerNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,15 +205,36 @@ public class CadastroPedidosView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCadastrarPedido;
+    private javax.swing.JTable TbPedidos;
+    private javax.swing.JTextField TxtFieldBebidaName;
     private javax.swing.JTextField TxtFieldCPF;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JTextField TxtFieldHamburguerName;
+    private javax.swing.JButton btnTelaPincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+private void listarLanches() {
+        try {
+            PedidosDAO pedidodao = new PedidosDAO();
+            double precoTotal;
+            DefaultTableModel model = (DefaultTableModel) TbPedidos.getModel();
+            model.setNumRows(0);
+            ArrayList<PedidoModel> pedidos = pedidodao.MostrarPedidos();
+            for (int num = 0; num < pedidos.size(); num++) {
+                model.addRow(new Object[]{
+                    pedidos.get(num).getCpf(),
+                    pedidos.get(num).getNome(),
+                    pedidos.get(num).getNomeLanche(),
+                    pedidos.get(num).getNomeBebida(),
+                    precoTotal = pedidos.get(num).getPrecoBebida() + pedidos.get(num).getPrecoLanche()
+            });
+            }
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "Erro para listar os clientes: " + erro);
+        }
+    }
 }
