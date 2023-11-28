@@ -19,7 +19,7 @@ public class LancheDAO {
      Connection conn;
      PreparedStatement pstm;
      ResultSet resultst;
-     ArrayList<LancheModel> lanches = new ArrayList(){};
+     ArrayList<LancheModel> lanches = new ArrayList<>();
      
        public void CadastrarLanche(LancheModel lanche) {
          String sql = "insert into Lanches(nome, descricao, preco) values(?,?,?)";
