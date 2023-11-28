@@ -22,8 +22,8 @@ create table Bebidas(
 
 create table Pedidos(
    id int not null auto_increment primary key,
-   lancheID int,
-   bebidaID int,
+   lancheID  varchar(255) not null,
+   bebidaID  varchar(255) not null,
    clienteID varchar(255) not null,  
    foreign key(lancheID) references Lanches(nome),
    foreign key(bebidaID) references Bebidas(nome),

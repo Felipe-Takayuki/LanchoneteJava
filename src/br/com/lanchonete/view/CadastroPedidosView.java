@@ -22,7 +22,7 @@ public class CadastroPedidosView extends javax.swing.JFrame {
      */
     public CadastroPedidosView() {
         initComponents();
-        listarLanches();
+        listarPedidos();
     }
 
     /**
@@ -149,20 +149,16 @@ public class CadastroPedidosView extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtFieldCPFActionPerformed
 
     private void BtnCadastrarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarPedidoActionPerformed
-       String cpf, hamburguerNome, bebidaNome;
-       cpf = TxtFieldCPF.getText();
-       hamburguerNome = TxtFieldHamburguerName.getText();
-       bebidaNome = TxtFieldBebidaName.getText();
-       
-        PedidoCadastro pdCadastro = new PedidoCadastro();
-        pdCadastro.setCpf(cpf);
-        pdCadastro.setNomeBebida(bebidaNome);
-        pdCadastro.setNomeLanche(hamburguerNome);
+     cadastrarPedido();
+     listarPedidos();
         
     }//GEN-LAST:event_BtnCadastrarPedidoActionPerformed
 
     private void btnTelaPincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelaPincipalActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        TeleInicialView tiv = new TeleInicialView();
+        tiv.setVisible(true);
+
     }//GEN-LAST:event_btnTelaPincipalActionPerformed
 
     private void TxtFieldHamburguerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFieldHamburguerNameActionPerformed
@@ -217,7 +213,7 @@ public class CadastroPedidosView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-private void listarLanches() {
+    private void listarPedidos() {
         try {
             PedidosDAO pedidodao = new PedidosDAO();
             double precoTotal;
@@ -231,10 +227,25 @@ private void listarLanches() {
                     pedidos.get(num).getNomeLanche(),
                     pedidos.get(num).getNomeBebida(),
                     precoTotal = pedidos.get(num).getPrecoBebida() + pedidos.get(num).getPrecoLanche()
-            });
+                });
             }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro para listar os clientes: " + erro);
         }
+    }
+    
+    private void cadastrarPedido(){
+       String cpf, hamburguerNome, bebidaNome;
+        cpf = TxtFieldCPF.getText();
+        hamburguerNome = TxtFieldHamburguerName.getText();
+        bebidaNome = TxtFieldBebidaName.getText();
+        
+        PedidoCadastro pdCadastro = new PedidoCadastro();
+        pdCadastro.setCpf(cpf);
+        pdCadastro.setNomeBebida(bebidaNome);
+        pdCadastro.setNomeLanche(hamburguerNome);
+        
+        PedidosDAO pdDAO = new PedidosDAO();
+        pdDAO.CadastrarPedido(pdCadastro);
     }
 }

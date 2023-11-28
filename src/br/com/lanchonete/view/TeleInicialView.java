@@ -30,6 +30,7 @@ public class TeleInicialView extends javax.swing.JFrame {
         BtnNovoLanche = new javax.swing.JButton();
         BtnNovaBebida = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        BtnPedidos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,12 +61,23 @@ public class TeleInicialView extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("LancheJava");
 
+        BtnPedidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BtnPedidos.setText("Pedidos");
+        BtnPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPedidosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BtnPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(BtnNovaBebida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -90,7 +102,9 @@ public class TeleInicialView extends javax.swing.JFrame {
                 .addComponent(BtnNovoLanche, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
                 .addComponent(BtnNovaBebida, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(BtnPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,6 +127,12 @@ public class TeleInicialView extends javax.swing.JFrame {
        CadastrarBebidaView cbv = new CadastrarBebidaView();
        cbv.setVisible(true);    
     }//GEN-LAST:event_BtnNovaBebidaActionPerformed
+
+    private void BtnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPedidosActionPerformed
+        this.dispose();
+        CadastroPedidosView cpv = new CadastroPedidosView();
+        cpv.setVisible(true);
+    }//GEN-LAST:event_BtnPedidosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +172,7 @@ public class TeleInicialView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnNovaBebida;
     private javax.swing.JButton BtnNovoLanche;
+    private javax.swing.JButton BtnPedidos;
     private javax.swing.JButton btnNovoCliente;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

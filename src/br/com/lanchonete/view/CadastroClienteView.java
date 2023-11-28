@@ -161,25 +161,13 @@ public class CadastroClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtFieldIdadeActionPerformed
 
     private void btnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarClienteActionPerformed
-        String cpf, nome, telefone;
-        int idade;
-        cpf = TxtFieldCPF.getText();
-        nome = TxtFieldNome.getText();
-        telefone = TxtFieldTelefone.getText();
-        idade = Integer.parseInt(TxtFieldIdade.getText());
-        ClienteModel cliente = new ClienteModel();
-        cliente.setCpf(cpf);
-        cliente.setNome(nome);
-        cliente.setIdade(idade);
-        cliente.setTelefone(telefone);
-        ClienteDAO clienteDao = new ClienteDAO();
-        clienteDao.cadastrarCliente(cliente);
+        cadastroCliente();
         listarClientes();
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
     private void btnTelaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTelaPrincipalActionPerformed
-       this.dispose();
-       TeleInicialView tiv = new TeleInicialView();
+        this.dispose();
+        TeleInicialView tiv = new TeleInicialView();
        tiv.setVisible(true);    }//GEN-LAST:event_btnTelaPrincipalActionPerformed
 
     /**
@@ -253,5 +241,21 @@ public class CadastroClienteView extends javax.swing.JFrame {
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro para listar os clientes: " + erro);
         }
+    }
+
+    private void cadastroCliente() {
+        String cpf, nome, telefone;
+        int idade;
+        cpf = TxtFieldCPF.getText();
+        nome = TxtFieldNome.getText();
+        telefone = TxtFieldTelefone.getText();
+        idade = Integer.parseInt(TxtFieldIdade.getText());
+        ClienteModel cliente = new ClienteModel();
+        cliente.setCpf(cpf);
+        cliente.setNome(nome);
+        cliente.setIdade(idade);
+        cliente.setTelefone(telefone);
+        ClienteDAO clienteDao = new ClienteDAO();
+        clienteDao.cadastrarCliente(cliente);
     }
 }

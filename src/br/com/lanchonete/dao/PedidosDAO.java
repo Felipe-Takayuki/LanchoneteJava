@@ -40,10 +40,11 @@ public class PedidosDAO {
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Pedidos ERROR:" + erro);
         }
+      
     }
     
     public ArrayList<PedidoModel> MostrarPedidos() {
-        String sql = " SELECT clientes.cpf, clientes.nome,   bebidas.nome as bebida,lanches.nome as lanche,lanches.preco as precoLanche, bebidas.preco as precoBebida FROM clientes JOIN pedidos ON clientes.cpf = pedidos.clienteID JOIN lanches ON pedidos.lancheID = lanches.id JOIN bebidas ON pedidos.bebidaID = bebidas.id";
+        String sql = " SELECT clientes.cpf, clientes.nome,   bebidas.nome as bebida,lanches.nome as lanche,lanches.preco as precoLanche, bebidas.preco as precoBebida FROM clientes JOIN pedidos ON clientes.cpf = pedidos.clienteID JOIN lanches ON pedidos.lancheID = lanches.nome JOIN bebidas ON pedidos.bebidaID = bebidas.nome";
         conn = new DAO().conecta();
         try {
            pstm = conn.prepareStatement(sql);

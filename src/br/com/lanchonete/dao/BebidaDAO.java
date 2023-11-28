@@ -5,7 +5,6 @@
 package br.com.lanchonete.dao;
 
 import br.com.lanchonete.model.BebidaModel;
-import br.com.lanchonete.model.LancheModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,7 +52,6 @@ public class BebidaDAO {
             while (resultst.next()) {
 
                 BebidaModel bebida = new BebidaModel();
-                bebida.setId(resultst.getInt("id"));
                 bebida.setNome(resultst.getString("nome"));
                 bebida.setPreco(resultst.getDouble("preco"));
                 bebidas.add(bebida);

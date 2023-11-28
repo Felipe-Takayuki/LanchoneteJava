@@ -78,13 +78,13 @@ public class CadastrarBebidaView extends javax.swing.JFrame {
 
         TbBebidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "ID", "Nome", "Preço"
+                "Nome", "Preço"
             }
         ));
         jScrollPane1.setViewportView(TbBebidas);
@@ -138,19 +138,7 @@ public class CadastrarBebidaView extends javax.swing.JFrame {
        tiv.setVisible(true);        }//GEN-LAST:event_TxtFieldPrecoBebidaActionPerformed
 
     private void BtnCadastrarBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarBebidaActionPerformed
-         String nome;
-         double preco;
-         
-         nome = TxtFieldNomeBebida.getText();
-         preco = Double.parseDouble(TxtFieldPrecoBebida.getText());
-         
-         BebidaModel bebida = new BebidaModel();
-         
-         bebida.setNome(nome);
-         bebida.setPreco(preco);
-         
-         BebidaDAO bebidaDao = new BebidaDAO();
-         bebidaDao.CadastrarBebida(bebida);       
+         cadastrarBebida();
          listarBebidas();
          
     }//GEN-LAST:event_BtnCadastrarBebidaActionPerformed
@@ -227,4 +215,20 @@ private void listarBebidas() {
             JOptionPane.showMessageDialog(null, "Erro para listar os clientes: " + erro);
         }
 }
+
+ private void cadastrarBebida(){
+         String nome;
+         double preco;
+         
+         nome = TxtFieldNomeBebida.getText();
+         preco = Double.parseDouble(TxtFieldPrecoBebida.getText());
+         
+         BebidaModel bebida = new BebidaModel();
+         
+         bebida.setNome(nome);
+         bebida.setPreco(preco);
+         
+         BebidaDAO bebidaDao = new BebidaDAO();
+         bebidaDao.CadastrarBebida(bebida);  
+ }
 }

@@ -131,26 +131,14 @@ public class CadastroLancheView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCadastrarLancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarLancheActionPerformed
-       String nome, desc;
-       double preco;
-       LancheDAO lanchedao = new LancheDAO();
-       nome = TxtFieldNomeLanche.getText();
-       desc = TxtFieldDescLanche.getText();
-       preco = Double.parseDouble(TxtFieldPrecoLanche.getText()); 
-       LancheModel lanche = new LancheModel();
-       lanche.setNome(nome);
-       lanche.setDesc(desc);
-       lanche.setPreco(preco);
-       lanchedao.CadastrarLanche(lanche);
-       listarLanches();
-       
-       
+        cadastrarLanche();
+        listarLanches();
     }//GEN-LAST:event_BtnCadastrarLancheActionPerformed
 
     private void BtnPaginaInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPaginaInicialActionPerformed
-       this.dispose();
-       TeleInicialView tiv = new TeleInicialView();
-       tiv.setVisible(true);    
+        this.dispose();
+        TeleInicialView tiv = new TeleInicialView();
+        tiv.setVisible(true);
     }//GEN-LAST:event_BtnPaginaInicialActionPerformed
 
     /**
@@ -201,7 +189,7 @@ public class CadastroLancheView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
- private void listarLanches() {
+    private void listarLanches() {
         try {
             LancheDAO lanchedao = new LancheDAO();
             DefaultTableModel model = (DefaultTableModel) TbLanchesCadastrados.getModel();
@@ -212,10 +200,24 @@ public class CadastroLancheView extends javax.swing.JFrame {
                     lanches.get(num).getNome(),
                     lanches.get(num).getDesc(),
                     lanches.get(num).getPreco()
-            });
+                });
             }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro para listar os clientes: " + erro);
         }
+    }
+
+    private void cadastrarLanche() {
+        String nome, desc;
+        double preco;
+        LancheDAO lanchedao = new LancheDAO();
+        nome = TxtFieldNomeLanche.getText();
+        desc = TxtFieldDescLanche.getText();
+        preco = Double.parseDouble(TxtFieldPrecoLanche.getText());
+        LancheModel lanche = new LancheModel();
+        lanche.setNome(nome);
+        lanche.setDesc(desc);
+        lanche.setPreco(preco);
+        lanchedao.CadastrarLanche(lanche);
     }
 }

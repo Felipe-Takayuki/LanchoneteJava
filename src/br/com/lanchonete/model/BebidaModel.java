@@ -10,13 +10,7 @@ package br.com.lanchonete.model;
  */
 public class BebidaModel {
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+   
 
     public String getNome() {
         return nome;
@@ -33,7 +27,7 @@ public class BebidaModel {
     public void setPreco(double preco) {
         this.preco = preco;
     }
-    private int id;
+ 
     private String nome;
     private double preco;
 }

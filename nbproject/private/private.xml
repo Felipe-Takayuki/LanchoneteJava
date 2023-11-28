@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/LanchoneteJava/src/br/com/lanchonete/model/PedidoCadastro.java</file>
+            <file>file:/C:/LanchoneteJava/src/br/com/lanchonete/view/CadastroPedidosView.java</file>
+            <file>file:/C:/LanchoneteJava/src/br/com/lanchonete/view/CadastroClienteView.java</file>
+            <file>file:/C:/LanchoneteJava/src/br/com/lanchonete/view/CadastrarBebidaView.java</file>
+            <file>file:/C:/LanchoneteJava/src/br/com/lanchonete/model/BebidaModel.java</file>
+            <file>file:/C:/LanchoneteJava/src/br/com/lanchonete/view/CadastroLancheView.java</file>
+            <file>file:/C:/LanchoneteJava/src/br/com/lanchonete/model/PedidoModel.java</file>
+            <file>file:/C:/LanchoneteJava/src/br/com/lanchonete/view/TeleInicialView.java</file>
+            <file>file:/C:/LanchoneteJava/src/br/com/lanchonete/dao/PedidosDAO.java</file>
+            <file>file:/C:/LanchoneteJava/src/br/com/lanchonete/dao/LancheDAO.java</file>
+        </group>
+    </open-files>
+</project-private>

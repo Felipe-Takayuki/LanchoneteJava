@@ -50,7 +50,7 @@ public class LancheDAO {
             while (resultst.next()) {
                 
                 LancheModel lanche = new LancheModel();
-                lanche.setId(resultst.getInt("id"));
+ 
                 lanche.setNome(resultst.getString("nome"));
                 lanche.setDesc(resultst.getString("descricao"));
                 lanche.setPreco(resultst.getDouble("preco"));
