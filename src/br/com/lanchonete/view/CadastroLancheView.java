@@ -61,6 +61,8 @@ public class CadastroLancheView extends javax.swing.JFrame {
 
         jLabel3.setText("Preço");
 
+        TbLanchesCadastrados.setBackground(new java.awt.Color(153, 153, 153));
+        TbLanchesCadastrados.setForeground(new java.awt.Color(255, 255, 255));
         TbLanchesCadastrados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},

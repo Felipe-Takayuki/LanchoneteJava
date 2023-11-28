@@ -73,6 +73,8 @@ public class CadastroPedidosView extends javax.swing.JFrame {
             }
         });
 
+        TbPedidos.setBackground(new java.awt.Color(153, 153, 153));
+        TbPedidos.setForeground(new java.awt.Color(255, 255, 255));
         TbPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},

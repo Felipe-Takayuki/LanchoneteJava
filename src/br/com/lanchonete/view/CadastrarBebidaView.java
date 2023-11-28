@@ -76,6 +76,8 @@ public class CadastrarBebidaView extends javax.swing.JFrame {
             }
         });
 
+        TbBebidas.setBackground(new java.awt.Color(153, 153, 153));
+        TbBebidas.setForeground(new java.awt.Color(255, 255, 255));
         TbBebidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
